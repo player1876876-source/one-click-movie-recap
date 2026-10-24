@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Click Movie Recap</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="logo">🎬</div>
+      <div><h1>One Click Recap AI</h1><p>English → မြန်မာအသံ + မြန်မာစာတန်းထိုး</p></div>
+    </header>
+    <section class="card">
+      <h2>ဗီဒီယိုတင်ပါ</h2>
+      <p class="muted">စမ်းသပ်ဖို့ ၁–၃ မိနစ်ခန့်ရှိတဲ့ အသံပါတဲ့ MP4 ကို အရင်သုံးပါ။</p>
+      <form id="form">
+        <label class="upload" for="video">📁 Video ရွေးရန် <span id="filename">ဖိုင်မရွေးရသေးပါ</span></label>
+        <input id="video" name="video" type="file" accept="video/*" required>
+        <label class="check"><input type="checkbox" name="zoom" checked> 9:16 Blur Background နဲ့ Export လုပ်မယ်</label>
+        <button id="go" type="submit">✨ One Click Recap လုပ်မယ်</button>
+      </form>
+      <div id="status" class="status" aria-live="polite"></div>
+      <a id="download" class="download hidden" href="#">⬇️ မြန်မာအသံပါ Video ကို Download လုပ်မယ်</a>
+    </section>
+    <section class="card notes">
+      <h3>ပါဝင်တဲ့ Feature များ</h3>
+      <ul>
+        <li>English စကားပြောကို AI နဲ့ စာသားပြောင်းခြင်း</li>
+        <li>သဘာဝကျတဲ့ မြန်မာဘာသာပြန်</li>
+        <li>မြန်မာ AI အသံ (အင်တာနက်လိုအပ်)</li>
+        <li>မြန်မာစာတန်းထိုးကို Video ထဲ အပြီးထည့်ခြင်း</li>
+        <li>9:16 Blur Background နှင့် MP4 Export</li>
+      </ul>
+      <p class="warning">မှတ်ချက် — ဒီ Starter Version က AI API Key လိုအပ်ပါတယ်။ Blur/Crop/Zoom လုပ်ရုံနဲ့ Copyright ကင်းလွတ်မသွားပါ။ အသုံးပြုခွင့်ရှိတဲ့ Video ကိုသာ သုံးပါ။</p>
+    </section>
+    <footer>ကိုယ်ပိုင် Movie Recap Tool · Starter Version</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
