@@ -1,0 +1,88 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b12;
+  color: #ffffff;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  background: #171725;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: #191927;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #7657ff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #44445a;
+  background: #101019;
+  color: white;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+}
+
+.status {
+  margin-top: 15px;
+  color: #a99aff;
+  overflow-wrap: anywhere;
+}
+
+video {
+  width: 100%;
+  border-radius: 12px;
+}
+
+a {
+  color: #b6a6ff;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 21px;
+  }
+}
