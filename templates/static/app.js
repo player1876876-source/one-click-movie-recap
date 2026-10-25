@@ -1,17 +1,27 @@
 
-const form = document.getElementById("uploadForm");
+const form = document.getElementById("form");
 
 if (form) {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const status = document.getElementById("status");
-    const result = document.getElementById("result");
-    const button = form.querySelector('button[type="submit"]');
+    const download = document.getElementById("download");
+    const button = document.getElementById("go");
 
-    status.textContent = "ဗီဒီယိုကို လုပ်ဆောင်နေပါတယ်...";
-    if (button) button.disabled = true;
-    if (result) result.innerHTML = "";
+    if (status) {
+      status.textContent = "ဗီဒီယိုကို လုပ်ဆောင်နေပါတယ်။ ခဏစောင့်ပါ...";
+    }
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = "လုပ်ဆောင်နေပါတယ်...";
+    }
+
+    if (download) {
+      download.classList.add("hidden");
+      download.removeAttribute("href");
+    }
 
     try {
       const response = await fetch("/api/process", {
@@ -22,22 +32,33 @@ if (form) {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "လုပ်ဆောင်မှု မအောင်မြင်ပါ");
+        throw new Error(
+          data.error || "လုပ်ဆောင်မှု မအောင်မြင်ပါ"
+        );
       }
 
-      status.textContent = "ပြီးပါပြီ။";
-      if (result && data.output_url) {
-        const link = document.createElement("a");
-        link.href = data.output_url;
-        link.textContent = "ပြီးသွားတဲ့ ဗီဒီယိုကို ကြည့်ရန်";
-        link.target = "_blank";
-        result.appendChild(link);
+      if (data.output_url && download) {
+        download.href = data.output_url;
+        download.classList.remove("hidden");
+        download.textContent =
+          "⬇️ ပြီးသွားတဲ့ ဗီဒီယိုကို Download လုပ်မယ်";
+      }
+
+      if (status) {
+        status.textContent = data.output_url
+          ? "ပြီးပါပြီ။ အောက်ကခလုတ်ကိုနှိပ်ပြီး ဗီဒီယိုယူနိုင်ပါပြီ။"
+          : "ပြီးပါပြီ။ ဒါပေမဲ့ ဗီဒီယိုလင့်ခ် မရရှိသေးပါ။";
       }
     } catch (error) {
-      status.textContent =
-        error.message || "အမှားတစ်ခု ဖြစ်သွားပါတယ်။";
+      if (status) {
+        status.textContent =
+          "အမှား: " + (error.message || "ပြန်စမ်းကြည့်ပါ။");
+      }
     } finally {
-      if (button) button.disabled = false;
+      if (button) {
+        button.disabled = false;
+        button.textContent = "✨ One Click Recap လုပ်မယ်";
+      }
     }
   });
 }
